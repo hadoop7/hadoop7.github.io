@@ -1,0 +1,741 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from www.scala-exercises.org/scala_tutorial/higher_order_functions by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 May 2017 05:43:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    
+
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="../assets/images/favicon.png" />
+<link rel="canonical" href="higher_order_functions.html" />
+
+<title>Scala Tutorial | Higher Order Functions</title>
+<meta name="description" content="&lt;p&gt;Quickly Learn Scala Through An Interactive Tutorial Based On The First Two Courses Of The Scala MOOCs.
+&lt;/p&gt;">
+<meta name="author" content="47 Degrees">
+<meta property="og:image" content="../assets/images/poster.png"/>
+<meta property="og:title" content="Scala Tutorial | Higher Order Functions"/>
+<meta property="og:site_name" content="Scala Exercises"/>
+<meta property="og:url" content="higher_order_functions.html"/>
+<meta property="og:type" content="website" />
+<meta property="og:description" content="&lt;p&gt;Quickly Learn Scala Through An Interactive Tutorial Based On The First Two Courses Of The Scala MOOCs.
+&lt;/p&gt;"/>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="../assets/images/poster.png" />
+<meta name="twitter:site" content="@scala-exercises">
+
+  <!-- CSS -->
+<link rel="stylesheet" media="screen" href="../assets/stylesheets/main.css" />
+  <!-- Font-Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" media="screen" href="../assets/lib/highlightjs/styles/atelier-savanna-dark.css" />
+  </head>
+  <body data-library="scala_tutorial" data-section="higher_order_functions">
+    <header class="navbar navbar-inverse navbar-fixed-top" style="background-color: #f26527 ;" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="../index.html" class="navbar-brand">
+            <img src=../assets/images/navbar_brand_light.svg alt="">
+            <span>Scala Exercises</span>
+          </a>
+        </div>
+
+        <div id="navbar-sections" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="https://github.com/login/oauth/authorize?client_id=26f2a631724c3b1057ea&amp;redirect_uri=https://www.scala-exercises.org/_oauth-callback&amp;scope=&amp;state=68b5eb2f-6cca-4fa9-9720-512695ae3dc7"><i class="fa fa-github"></i>Login with GitHub</a></li> 
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="terms_and_types.html"  >
+    Terms And Types
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="definitions_and_evaluation.html"  >
+    Definitions And Evaluation
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="functional_loops.html"  >
+    Functional Loops
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="lexical_scopes.html"  >
+    Lexical Scopes
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="tail_recursion.html"  >
+    Tail Recursion
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="structuring_information.html"  >
+    Structuring Information
+  </a>
+</li>
+
+          
+            
+
+<li class="actives  current ">
+  <span class="bullet-active" ></span>
+  <a href="higher_order_functions.html"  style="color: #f26527; font-weight: bold;"  >
+    Higher Order Functions
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="standard_library.html"  >
+    Standard Library
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="syntactic_conveniences.html"  >
+    Syntactic Conveniences
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="object_oriented_programming.html"  >
+    Object Oriented Programming
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="imperative_programming.html"  >
+    Imperative Programming
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="classes_vs_case_classes.html"  >
+    Classes Vs Case Classes
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="polymorphic_types.html"  >
+    Polymorphic Types
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="lazy_evaluation.html"  >
+    Lazy Evaluation
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="type_classes.html"  >
+    Type Classes
+  </a>
+</li>
+
+          
+          </ul>
+        </div>
+          <!--.nav-collapse -->
+      </div>
+    </header>
+    <div id="wrapper">
+
+      <section id="sidebar">
+          <div class="header-technologie">
+              <div class="content-logo-technologie" style="background-color: #f26527;">
+                   <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxz
+dmcgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDMyIDMyIiB2ZXJzaW9u
+PSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0
+dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAz
+LjguMyAoMjk4MDIpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgog
+ICAgPHRpdGxlPnN0ZF9saWI8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48
+L2Rlc2M+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTYuMjQ4MzczOSwyMS45OTc1IEMx
+My40OTAwMzU4LDIyLjc5NiA5LjczMTQ0ODM2LDIzLjQxIDYuMzM3MjE2MzMsMjMuNzQ3NSBDNC4w
+MzM1ODE5MSwyMy45OTMgMS45MTE2MzE0OCwyNC4xMTYgMC4zMDUxMTA2MDMsMjQuMTE2IEwwLjMw
+NTExMDYwMywzMS44MjA1IEMyLjk3MjYwNjcsMzEuODIwNSAxMS4zNjg1NzksMzAuOTMwNSAxNi4z
+OTk5NDE3LDI5LjUxODUgQzE4LjI0ODg3MjUsMjguOTk2NSAxOS45NzYzNTE1LDI4LjQxMzUgMTku
+OTc2MzUxNSwyNy43Njg1IEwxOS45NzYzNTE1LDIwLjA2NCBDMTkuOTc2MzUxNSwyMC44MDA1IDE4
+LjA5NzMwNDYsMjEuNDQ1NSAxNi4yNDgzNzM5LDIxLjk5NzUgTDE2LjI0ODM3MzksMjEuOTk3NSBa
+IiBpZD0icGF0aC0xIj48L3BhdGg+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJv
+a2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2Rk
+Ij4KICAgICAgICA8ZyBpZD0iYmV0YSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTU4OC4wMDAwMDAs
+IC03Mi4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9InN0ZF9saWIiIHRyYW5zZm9ybT0idHJh
+bnNsYXRlKDU4OC4wMDAwMDAsIDcyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9Im9i
+amVjdC0rLW9iamVjdC0rLW9iamVjdCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNi4wMDAwMDAsIDAu
+MDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTE2LjI0ODM3MzksMi4xMzcg
+QzExLjYxMDk4ODksMy40ODggNC4yNzU5OTE3OSw0LjI1NSAwLjMwNTExMDYwMyw0LjI1NSBMMC4z
+MDUxMTA2MDMsMTEuODk4NSBMMC4zMzU3MjA0MDQsMTEuOTYgQzMuMDMzMzMyNTksMTEuOTYgMTEu
+MzY4NTc5LDExLjA3IDE2LjM5OTk0MTcsOS42NTggQzE3LjM3MDA3NSw5LjM4MTUgMTguMzA5NTk4
+NCw5LjEwNSAxOC45NzYxMDIxLDguNzk4NSBDMTkuNTgyMzczNyw4LjUyMiAxOS45NzYzNTE1LDgu
+MjE1IDE5Ljk3NjM1MTUsNy45MDggTDE5Ljk3NjM1MTUsMC4yMDM1IEMxOS45NzYzNTE1LDAuOTcw
+NSAxOC4wOTczMDQ2LDEuNjE1NSAxNi4yNDgzNzM5LDIuMTM3IEwxNi4yNDgzNzM5LDIuMTM3IFoi
+IGlkPSJvYmplY3QiIGZpbGw9IiNGRkZGRkYiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8
+cGF0aCBkPSJNMTYuMjQ4MzczOSwxMi4wODMgQzEzLjQ5MDAzNTgsMTIuODgxIDkuNzMxNDQ4MzYs
+MTMuNDk1IDYuMzM3MjE2MzMsMTMuODMyNSBDNC4wNjM2OTgwMSwxNC4wNzggMS45MTE2MzE0OCwx
+NC4yMDEgMC4zMDUxMTA2MDMsMTQuMjAxIEwwLjMwNTExMDYwMywyMS44NDQ1IEwwLjMzNTcyMDQw
+NCwyMS45MDU1IEMzLjAzMzMzMjU5LDIxLjkwNTUgMTEuMzY4NTc5LDIxLjAxNTUgMTYuMzk5OTQx
+NywxOS42MDM1IEMxNy4zNzAwNzUsMTkuMzI3IDE4LjMwOTU5ODQsMTkuMDUxIDE4Ljk3NjEwMjEs
+MTguNzQ0IEMxOS41ODIzNzM3LDE4LjQ2NzUgMTkuOTc2MzUxNSwxOC4xNjA1IDE5Ljk3NjM1MTUs
+MTcuODUzNSBMMTkuOTc2MzUxNSwxMC4xNDkgQzE5Ljk3NjM1MTUsMTAuODg1NSAxOC4wOTczMDQ2
+LDExLjUzIDE2LjI0ODM3MzksMTIuMDgzIEwxNi4yNDgzNzM5LDEyLjA4MyBaIiBpZD0ib2JqZWN0
+IiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgPG1hc2sgaWQ9Im1h
+c2stMiIgZmlsbD0id2hpdGUiPgogICAgICAgICAgICAgICAgICAgICAgICA8dXNlIHhsaW5rOmhy
+ZWY9IiNwYXRoLTEiPjwvdXNlPgogICAgICAgICAgICAgICAgICAgIDwvbWFzaz4KICAgICAgICAg
+ICAgICAgICAgICA8dXNlIGlkPSJvYmplY3QiIGZpbGw9IiNGRkZGRkYiIHhsaW5rOmhyZWY9IiNw
+YXRoLTEiPjwvdXNlPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAg
+ICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="/>
+              </div>
+              <h1 class="text-center">Scala Tutorial</h1>
+          </div>
+       
+        
+
+
+
+  <div class="content-progres-bar">
+    <div class="progress">
+      <div class="progress-bar"
+	   role="progressbar"
+	   aria-valuenow="0"
+	   aria-valuemin="0"
+	   aria-valuemax="100"
+	   style="background-color: #f26527; width : 0% ;"></div>
+    </div>
+    <span> 0 / 15 </span>
+  </div>
+
+
+        <ul>
+          <li>
+            <h3>Sections</h3>
+          </li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="terms_and_types.html"  >
+    Terms And Types
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="definitions_and_evaluation.html"  >
+    Definitions And Evaluation
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="functional_loops.html"  >
+    Functional Loops
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="lexical_scopes.html"  >
+    Lexical Scopes
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="tail_recursion.html"  >
+    Tail Recursion
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="structuring_information.html"  >
+    Structuring Information
+  </a>
+</li>
+
+          
+            
+
+<li class="actives  current ">
+  <span class="bullet-active" ></span>
+  <a href="higher_order_functions.html"  style="color: #f26527; font-weight: bold;"  >
+    Higher Order Functions
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="standard_library.html"  >
+    Standard Library
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="syntactic_conveniences.html"  >
+    Syntactic Conveniences
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="object_oriented_programming.html"  >
+    Object Oriented Programming
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="imperative_programming.html"  >
+    Imperative Programming
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="classes_vs_case_classes.html"  >
+    Classes Vs Case Classes
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="polymorphic_types.html"  >
+    Polymorphic Types
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="lazy_evaluation.html"  >
+    Lazy Evaluation
+  </a>
+</li>
+
+          
+            
+
+<li class="actives ">
+  <span class="bullet-active" ></span>
+  <a href="type_classes.html"  >
+    Type Classes
+  </a>
+</li>
+
+          
+
+        </ul>
+      </section>
+
+      <section id="content-detail">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <div class="content-header clearfix">
+                <h2 class="pull-left">Higher Order Functions</h2>
+                <div class="add-exercises pull-right hidden-xs">
+                  <a href="https://github.com/scala-exercises/exercises-scalatutorial/blob/master/src/main/scala/scalatutorial/sections/HigherOrderFunctions.scala" target="_blank" type="button" class="btn btn-default btn-sm">View on GitHub</a>
+                </div>
+              </div>
+
+
+              <div class="exercises-wrapper">
+
+                
+
+                
+                  
+
+  <div class="exercise unsolved" data-method="scalatutorial.sections.HigherOrderFunctions.tailRecSum">
+
+    <h3> Higher-Order Functions </h3><p>Functional languages treat functions as <i>first-class values</i>.</p><p>This means that, like any other value, a function
+can be passed as a parameter and returned as a result.</p><p>This provides a flexible way to compose programs.</p><p>Functions that take other functions as parameters or that return functions
+as results are called <i>higher order functions</i>.</p><h3> Motivation </h3><p>Consider the following programs.</p><p>Take the sum of the integers between <code>a</code> and <code>b</code>:</p><pre class="scala"><code class="scala">def sumInts(a: Int, b: Int): Int =
+  if (a &gt; b) 0 else a + sumInts(a + 1, b)</code></pre><p>Take the sum of the cubes of all the integers between <code>a</code>
+and <code>b</code>:</p><pre class="scala"><code class="scala">def cube(x: Int): Int = x * x * x
+
+def sumCubes(a: Int, b: Int): Int =
+  if (a &gt; b) 0 else cube(a) + sumCubes(a + 1, b)</code></pre><p>Take the sum of the factorials of all the integers between <code>a</code>
+and <code>b</code>:</p><pre class="scala"><code class="scala">def sumFactorials(a: Int, b: Int): Int =
+  if (a &gt; b) 0 else factorial(a) + sumFactorials(a + 1, b)</code></pre><p>Note how similar these methods are.
+Can we factor out the common pattern?</p><h3> Summing with Higher-Order Functions </h3><p>Let's define:</p><pre class="scala"><code class="scala">def sum(f: Int =&gt; Int, a: Int, b: Int): Int =
+  if (a &gt; b) 0
+  else f(a) + sum(f, a + 1, b)</code></pre><p>We can then write:</p><pre class="scala"><code class="scala">def id(x: Int): Int = x
+def sumInts(a: Int, b: Int) = sum(id, a, b)
+def sumCubes(a: Int, b: Int) = sum(cube, a, b)
+def sumFactorials(a: Int, b: Int) = sum(factorial, a, b)</code></pre><h3> Function Types </h3><p>The type <code>A =&gt; B</code> is the type of a <i>function</i> that
+takes an argument of type <code>A</code> and returns a result of
+type <code>B</code>.</p><p>So, <code>Int =&gt; Int</code> is the type of functions that map integers to integers.</p><h3> Anonymous Functions </h3><p>Passing functions as parameters leads to the creation of many small functions.</p><p>Sometimes it is tedious to have to define (and name) these functions using <code>def</code>.</p><p>Compare to strings: We do not need to define a string using <code>val</code>. Instead of:</p><pre class="scala"><code class="scala">val str = &quot;abc&quot;; println(str)</code></pre><p>We can directly write:</p><pre class="scala"><code class="scala">println(&quot;abc&quot;)</code></pre><p>because strings exist as <i>literals</i>. Analogously we would like function
+literals, which let us write a function without giving it a name.</p><p>These are called <i>anonymous functions</i>.</p><h4> Anonymous Function Syntax </h4><p>Example of a function that raises its argument to a cube:</p><pre class="scala"><code class="scala">(x: Int) =&gt; x * x * x</code></pre><p>Here, <code>(x: Int)</code> is the <i>parameter</i> of the function, and
+<code>x * x * x</code> is it's <i>body</i>.</p><p>The type of the parameter can be omitted if it can be inferred by the
+compiler from the context.</p><p>If there are several parameters, they are separated by commas:</p><pre class="scala"><code class="scala">(x: Int, y: Int) =&gt; x + y</code></pre><h4> Anonymous Functions are Syntactic Sugar </h4><p>An anonymous function <code>(x1: T1, …, xn: Tn) =&gt; e</code>
+can always be expressed using <code>def</code> as follows:</p><pre class="scala"><code class="scala">{ def f(x1: T1, …, xn: Tn) = e ; f }</code></pre><p>where <code>f</code> is an arbitrary, fresh name (that's not yet used in the program).</p><p>One can therefore say that anonymous functions are <i>syntactic sugar</i>.</p><h4> Summation with Anonymous Functions </h4><p>Using anonymous functions, we can write sums in a shorter way:</p><pre class="scala"><code class="scala">def sumInts(a: Int, b: Int) = sum(x =&gt; x, a, b)
+def sumCubes(a: Int, b: Int) = sum(x =&gt; x * x * x, a, b)</code></pre><h3> Exercise </h3><p>The <code>sum</code> function uses linear recursion. Complete the following tail-recursive
+version:
+</p>
+
+    <div class="highlight">
+
+      <span class="bullet-state"></span>
+
+      <div class="compile">
+        <button type="button" tabIndex="-1" class="btn btn-default btn-xs"><i class="fa fa-play"></i> Run</button>
+      </div>
+      <pre class="exercise-pre scala"><code class="exercise-code scala">def sum(f: Int =&gt; Int, a: Int, b: Int): Int = {
+  def loop(x: Int, acc: Int): Int = {
+    if (x &gt; b) acc
+    else loop(x + res0, acc + f(x))
+  }
+  loop(a, res1)
+}
+sum(x =&gt; x, 1, 10) shouldBe 55</code></pre>
+    </div>
+    <div class="log"></div>
+
+    
+
+  </div>
+
+                
+
+              </div>
+
+              <div class="contributors clearfix">
+
+                
+<ul>
+  <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i>2 contributors</a>
+  </li>
+
+  
+    <li>
+      <a data-toggle="tooltip" data-placement="bottom" title="juanpedromoreno" href="https://github.com/juanpedromoreno" target="_blank">
+        <img src="https://avatars1.githubusercontent.com/u/4879373?v=3" alt="juanpedromoreno">
+      </a>
+    </li>
+  
+    <li>
+      <a data-toggle="tooltip" data-placement="bottom" title="julienrf" href="https://github.com/julienrf" target="_blank">
+        <img src="https://avatars1.githubusercontent.com/u/332812?v=3" alt="julienrf">
+      </a>
+    </li>
+  
+
+</ul>
+
+
+                <ul>
+                  <li> <a href="https://github.com/scala-exercises/exercises-scalatutorial/edit/master/src/main/scala/scalatutorial/sections/HigherOrderFunctions.scala" target="_blank"><i class="fa fa-pencil"></i>Edit exercises</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="comments">
+
+  <div id="disqus_thread"></div>
+  <script>
+       var disqus_config = function () {
+          this.page.url = 'https://' + window.location.host + window.location.pathname;
+          this.page.identifier = window.location.pathname;
+       };
+
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'http://scala-exercises.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+      
+<footer id="bottom" class="light">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <img src=../assets/images/footer_brand_dark.svg alt="">
+      
+      <p><span>Scala Exercises is an Open Source project by <a href="http://47deg.com/">47 Degrees</a></span></p>
+<ul>
+  <li>
+    <a href="https://github.com/scala-exercises/scala-exercises#contributing">Contributing</a>
+  </li>
+  <li>·</li>
+  <li>
+    <a href="https://github.com/scala-exercises/scala-exercises#license">License</a>
+  </li>
+</ul>
+
+      
+     </div>
+  </div>
+</footer>
+
+
+    </div>
+
+    
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">Users who have contributed to this file</h3>
+      </div>
+      <div class="modal-body">
+        <ul>
+
+          
+            <li>
+              <div class="row">
+                <div class="col-xs-9 col-md-9">
+                  <a href="https://github.com/juanpedromoreno"><img class="avatar" src="https://avatars1.githubusercontent.com/u/4879373?v=3" alt=""></a>
+                  <p>Integrates sbt-org-policies plugin (#9)</p>
+                  <span>
+                    <a href="https://github.com/juanpedromoreno">juanpedromoreno</a>
+                    contributed 2017-03-28T18:17:03Z</span>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <a href="https://github.com/scala-exercises/exercises-scalatutorial/commit/59fc5ca665c3cf07d4847b228a97d70d196a7f13" target="_blank" type="button" class="btn btn-default btn-sm">View on GitHub </a>
+                </div>
+              </div>
+            </li>
+          
+            <li>
+              <div class="row">
+                <div class="col-xs-9 col-md-9">
+                  <a href="https://github.com/julienrf"><img class="avatar" src="https://avatars1.githubusercontent.com/u/332812?v=3" alt=""></a>
+                  <p>Add HigherOrderFunctions section</p>
+                  <span>
+                    <a href="https://github.com/julienrf">julienrf</a>
+                    contributed 2016-11-17T13:46:24Z</span>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <a href="https://github.com/scala-exercises/exercises-scalatutorial/commit/c26221e9230db6d7e0f403a1043949a37fb0cb05" target="_blank" type="button" class="btn btn-default btn-sm">View on GitHub </a>
+                </div>
+              </div>
+            </li>
+          
+            <li>
+              <div class="row">
+                <div class="col-xs-9 col-md-9">
+                  <a href="https://github.com/julienrf"><img class="avatar" src="https://avatars1.githubusercontent.com/u/332812?v=3" alt=""></a>
+                  <p>Add tutorial structure. Add the first two sections.</p>
+                  <span>
+                    <a href="https://github.com/julienrf">julienrf</a>
+                    contributed 2016-11-15T17:00:02Z</span>
+                </div>
+                <div class="col-xs-3 col-md-3">
+                  <a href="https://github.com/scala-exercises/exercises-scalatutorial/commit/81b6abeb8d3496fb58d35d7b8aab336f08876d55" target="_blank" type="button" class="btn btn-default btn-sm">View on GitHub </a>
+                </div>
+              </div>
+            </li>
+          
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+<!-- Modal -->
+<div class="modal fade" id="mustSignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Sign up</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">
+          <a href="https://github.com/login/oauth/authorize?client_id=26f2a631724c3b1057ea&amp;redirect_uri=https://www.scala-exercises.org/_oauth-callback&amp;scope=&amp;state=68b5eb2f-6cca-4fa9-9720-512695ae3dc7" class="btn btn-info"><i class="fa fa-github"></i> Login with GitHub</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- JS -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-18433785-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    <script src="../assets/lib/highlightjs/highlight.min.js" type="text/javascript"></script>
+    <script src="../assets/lib/highlightjs/languages/scala.min.js" type="text/javascript"></script>
+    <script src="../assets/javascripts/emojify-cdn.js"></script>
+    <script src="../javascriptRoutes" type="text/javascript"></script>
+    
+
+
+
+
+  
+
+<script src="../assets/client-jsdeps.min.js" type="text/javascript"></script>
+
+
+
+
+
+
+  
+
+<script src="../assets/client-opt.js" type="text/javascript"></script>
+
+
+
+
+
+
+  
+
+
+
+    
+  </body>
+
+<!-- Mirrored from www.scala-exercises.org/scala_tutorial/higher_order_functions by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 May 2017 05:43:43 GMT -->
+</html>
