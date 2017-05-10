@@ -21,9 +21,6 @@
   <meta property="og:type" content="website" />
   <meta property="og:description" content="&lt;p&gt;Hadoop
 &lt;/p&gt;" />
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="../assets/images/poster.png" />
-  <meta name="twitter:site" content="@scala-exercises">
 
   <!-- CSS -->
   <link rel="stylesheet" media="screen" href="../assets/stylesheets/main.css" />
@@ -51,7 +48,7 @@
             <span class="icon-bar"></span>
           </button>
         <a href="../index.html" class="navbar-brand">
-          <img src=../assets/images/navbar_brand_light.svg alt="">
+          <!-- <img src=../assets/images/navbar_brand_light.svg alt=""> -->
           <span>Hadoop7</span>
         </a>
       </div>
@@ -62,7 +59,7 @@
 
           <li class="actives  current ">
             <span class="bullet-active"></span>
-            <a href="introduction.html" style="color: #26525B; font-weight: bold;">Introduction </a>
+            <a href="introduction.html" style="color: #26525B; font-weight: bold;">Installing Hadoop in Ubuntu </a>
           </li>
 
 
@@ -134,18 +131,20 @@
           <div class="col-lg-12">
 
             <div class="content-header clearfix">
-              <h2 class="pull-left">Introduction</h2>
+              <h2 class="pull-left">Installing Hadoop in Ubuntu</h2>
               <div class="add-exercises pull-right hidden-xs">
 
               </div>
             </div>
 
             <div class="exercises-wrapper">
+              <h3>Hadoop</h3>
               <p>               Hadoop is an open source, Java-based programming framework that supports the processing and storage of extremely large data sets in a distributed computing environment. It is part of the <a href="https://www.apache.org/">Apache</a>                project sponsored by the Apache Software Foundation.</p>
               Hadoop needs Java to be installed in the system. If you dont have java installed in the system, follow from this step , or if you hav java installed in your system, you cvan skip this step.
               <h3>Installing java</h3>
               <p> Check the java installation in your system by typing " <code>java -version</code> " in a terminal. It will display the installed java details .</p>
               <img src="/assets/images/hadoop/java-version-min.png" alt="java-version.png" width="732" height="438" />
+              <br>
               <br>
               <p>If java is not installed, then install java using the command</p>
               <pre>sudo apt install openjdk-8-jdk-headless</pre>
@@ -156,7 +155,8 @@
                   <pre>cd /usr/lib/jvm/</pre> and then run
                   <pre>ls</pre>
                 </p>
-                <img src="/assets/images/hadoop/java-loc-min.png" width="732" height="438" />
+                <img src="/assets/images/hadoop/java-loc-min.png" width="732" height="438" /><br>
+                <br><br>
                 <p>After locating the java installation path, we have to set the JAVA_HOME in <strong><em> .bashrc </em></strong>. Now, open <strong><em> .bashrc </em></strong> file using any editor like <em>gedit</em> or <em>nano</em>. Here im using <em>gedit</em>                  .
                 </p><pre>sudo gedit ~/.bashrc</pre>
                 <p> Now, assign the java installation location to JAVA_HOME as follows. </p>
@@ -165,17 +165,20 @@
                 <pre>sudo gedit /etc/environment </pre> and add the JAVA_HOME here also. And update the <strong><em>/etc/environment </em></strong> file by running
                 <pre>source /etc/environment</pre>
                 <img src="/assets/images/hadoop/java-home-min.png" width="732" height="438" />
+                <br><br>
                 <p>Verify JAVA_HOME by running the command</p>
                 <pre>echo $JAVA_HOME</pre>
                 <p>If everything is correct , it will display the JAVA_HOME location.</p>
                 <img src="/assets/images/hadoop/echo-java-home-min.png" width="732" height="438" />
 
+                <br><br>
                 <h3>Configuring ssh</h3> For installing hadoop , we have to configure ssh. First, install ssh by running the command
                 <pre>sudo apt install ssh</pre> Next, open a terminal and run the following command.
                 <pre>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</pre>
                 <p>It will generate a rsa key, like below.</p>
 
                 <img src="/assets/images/hadoop/ssh-min.png" width="732" height="438" />
+                <br><br>
                 <p>Now, we have to add that key to authorized keys using the following command.</p>
                 <pre>cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys</pre> To check the ssh, run <code> ssh localhost </code> .It must login without asking any password. If it asks for password, then you have to repeat the above ssh configuration steps.
 
@@ -188,7 +191,7 @@
                 <p>refresh the <strong><em>.bashrc</strong></em> file</p>
                 <pre>source .bashrc</pre>
                 <img src="/assets/images/hadoop/hadoop-home-min.png" width="732" height="438" />
-
+                <br><br>
                 <h4>Step II: Hadoop Configuration</h4>
                 <h5>Adding HADOOP_PREFIX</h5> Previously, we set JAVA_HOME path. Similarly, we have to set HADOOP_PREFIX path in <strong>hadoop-env.sh  </strong>. file present in<strong><em> etc/hadoop</em> </strong>folder . This is to specify the path for our hadoop folder.  To
                 do that, open a terminal and run the following commands.
@@ -263,6 +266,7 @@
                   <pre>hdfs namenode –format</pre> If everything is correct it will show the following screen. (dont worry if your screen dont match this ).</p>
 
                 <img src="/assets/images/hadoop/hadoop-format-min.png" width="732" height="438" />
+                <br><br>
                 <p>Now, after formatting namenode, we have to start namenode and datanode</p>
                 For that run the command.
                 <pre>start-dfs.sh</pre>
@@ -271,17 +275,21 @@
                 </p>
 
                 <img src="/assets/images/hadoop/jps-min.png" width="732" height="438" />
+                <br><br>
                 <p> Now, we have to start yarn. To do that, run</p>
                 <pre>start-yarn.sh</pre>
                 <p>You will get a screen like this. You can observe that resourceManager and NodeManager are also running.</p>
 
                 <img src="/assets/images/hadoop/jps2-min.png" width="732" height="438" />
+                <br><br>
                 <p>Thats it...<strong>.Our installation is completed</strong>... :) Now, open your browser and run <code> http://localhost:50070 </code> to know about your namenodes and datanodes. You will get  a screen like this.</p>
 
                 <img src="/assets/images/hadoop/dfs-browser-min.png" width="732" height="438" />
+                <br><br>
                 <p> Now,  in another tab, run <code> http://localhost:8088 </code> to manage your cluster.</p>
 
                 <img src="/assets/images/hadoop/yarn-browser-min.png" width="732" height="438" />
+                <br>
                 <p>If you want to stop hadoop, then type and run</p>
                 <pre>stop-dfs.sh</pre>
                 <pre>stop-yarn.sh</pre> Or , simply you can run
@@ -297,7 +305,7 @@
     <footer id="bottom" class="light">
       <div class="container-fluid">
         <div class="col-md-12">
-          <img src=../assets/images/footer_brand_dark.svg alt="">
+          <!-- <img src=../assets/images/footer_brand_dark.svg alt=""> -->
 
           <p><span>Hadoop7 is a website by Sai sri vastava Guntupalli</span></p>
 
