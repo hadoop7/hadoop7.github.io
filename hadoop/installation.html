@@ -13,11 +13,11 @@
   <title>Hadoop | Installation</title>
   <meta name="description" content="&lt;p&gt;Hadoop
 &lt;/p&gt;">
-  <meta name="author" content="47 Degrees">
+  <meta name="author" content="sai sri vastava">
   <meta property="og:image" content="../assets/images/poster.png" />
   <meta property="og:title" content="Hadoop | Introduction" />
-  <meta property="og:site_name" content="Scala Exercises" />
-  <meta property="og:url" content="asserts.html" />
+  <meta property="og:site_name" content="Hadoop | Introduction" />
+  <meta property="og:url" content="installation.html" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="&lt;p&gt;Hadoop
 &lt;/p&gt;" />
@@ -145,116 +145,148 @@
               Hadoop needs Java to be installed in the system. If you dont have java installed in the system, follow from this step , or if you hav java installed in your system, you cvan skip this step.
               <h3>Installing java</h3>
               <p> Check the java installation in your system by typing " <code>java -version</code> " in a terminal. It will display the installed java details .</p>
-              <img src="/assets/images/java-version-min.png" alt="java-version.png" width="732" height="438" />
+              <img src="/assets/images/hadoop/java-version-min.png" alt="java-version.png" width="732" height="438" />
+              <br>
               <p>If java is not installed, then install java using the command</p>
               <pre>sudo apt install openjdk-8-jdk-headless</pre>
-              <h3>Setting JAVA_HOME path</h3> Open
-              <strong><em> /etc/environment</em></strong> file using any editor like <em>gedit</em> or <em>nano</em> using the command
-              <pre>sudo gedit /etc/environment</pre> and add the following lines (your jdk name may differ. To check your jdk name  run
-              <pre>cd /usr/lib/jvm/</pre> and then run
-              <pre>ls</pre> to view the jre and jdk folders )
+              <h3>Setting JAVA_HOME path</h3>
+              <p> In <em>.bashrc</em> we have to add JAVA_HOME (the address for java installation ) .
 
-              <img class="alignnone size-full wp-image-174" src="https://hadoop7.files.wordpress.com/2017/01/java-version3.png" alt="java-version.png" width="732" height="438" />
-              <pre>JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-              export JAVA_HOME</pre> Now, to apply the changes, we have to  update <em>/etc/environment</em> .For that run
-              <pre>source /etc/environment</pre> Now , open  <strong><em>.bashrc</em></strong>  file using the command
-              <pre>sudo gedit ~/.bashrc</pre> and add the above two lines here also. And update the .bashrc file by running
-              <pre>source .bashrc</pre> Verify JAVA_HOME by running the command
-              <pre>echo $JAVA_HOME</pre> . If everything is correct , it will display the JAVA_HOME location.<img class="alignnone size-full wp-image-46" src="https://hadoop7.files.wordpress.com/2017/01/java-home1.png" alt="java-home1.png" width="732"
-                height="438" />
-              <h3>Configuring ssh</h3> For installing hadoop , we have to configure ssh. First, install ssh by running the command
-              <pre>sudo apt install ssh</pre> Next, open a terminal and run the following command.
-              <pre>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</pre> It will generate a rsa key, like below.
+                <p> Find the location where your java is installed. For that go to <em>/usr/lib/jvm/ </em> folder.
+                  <pre>cd /usr/lib/jvm/</pre> and then run
+                  <pre>ls</pre>
+                </p>
+                <img src="/assets/images/hadoop/java-loc-min.png" width="732" height="438" />
+                <p>After locating the java installation path, we have to set the JAVA_HOME in <strong><em> .bashrc </em></strong>. Now, open <strong><em> .bashrc </em></strong> file using any editor like <em>gedit</em> or <em>nano</em>. Here im using <em>gedit</em>                  .
+                </p><pre>sudo gedit ~/.bashrc</pre>
+                <p> Now, assign the java installation location to JAVA_HOME as follows. </p>
+                <pre>export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"</pre> Now, to apply the changes, we have to  update <strong> <em>.bashrc</em></strong> .For that run
+                <pre>source ~/.bashrc</pre> Now, do the same in <em>/etc/environment</em>  file using the command
+                <pre>sudo gedit /etc/environment </pre> and add the JAVA_HOME here also. And update the <strong><em>/etc/environment </em></strong> file by running
+                <pre>source /etc/environment</pre>
+                <img src="/assets/images/hadoop/java-home-min.png" width="732" height="438" />
+                <p>Verify JAVA_HOME by running the command</p>
+                <pre>echo $JAVA_HOME</pre>
+                <p>If everything is correct , it will display the JAVA_HOME location.</p>
+                <img src="/assets/images/hadoop/echo-java-home-min.png" width="732" height="438" />
 
-              <img class="alignnone size-full wp-image-24" src="https://hadoop7.files.wordpress.com/2017/01/ssh2.png" alt="ssh2.png" width="746" height="453" /> Now, we have to add that key to authorized keys using the following command.
-              <pre>cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys</pre> To check the ssh, run <code> ssh localhost </code> .It must login without asking any password. If it asks for password, then you have to repeat the above ssh configuration steps.
-              <h2>Installing Hadoop in Pseudo Distributed Mode</h2> Download hadoop-2.7.3 from this <a href="http://apache.mesi.com.ar/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz">link</a>. After downloading, extract it to the folder where you want to install hadoop. I installing  it in "<em>/usr/local/hadoop "</em> .
-               So after extracting the hadoop jar, run the below command to copy it to "<em>/usr/local/hadoop ". </em>
-              <pre>sudo mv hadoop-2.7.3 /usr/local/hadoop</pre>
-              <h3>Step I: Setting up Hadoop</h3> We have to set HADOOP_HOME path . For that open terminal and edit the .bashrc file.
-              <pre>sudo gedit .bashrc</pre> add the following lines
-              <pre>#hadoop
-              export HADOOP_HOME=/usr/local/hadoop
-              export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</pre> refresh the .bashrc file
-              <pre>source .bashrc</pre>
-              <h3><img class="alignnone size-full wp-image-166" src="https://hadoop7.files.wordpress.com/2017/01/hadoop-path.png" alt="hadoop-path.png" width="708" height="428" /></h3>
-              <h3>Step II: Hadoop Configuration</h3>
-              <h3>Adding HADOOP_PREFIX</h3> Previously, we set JAVA_HOME path. Similarly, we have to set HADOOP_PREFIX path in <strong>hadoop-env.sh  </strong>. file present in<strong><em> etc/hadoop</em> </strong>folder . This is to specify the path for our hadoop folder.  To do
-              that, open a terminal and run the following commands.
-              <pre>cd /usr/local/hadoop/etc/hadoop</pre>
-              <pre>gedit hadoop-env.sh</pre> and, in that file, add the HADOOP_PREFIX path
-              <pre>export HADOOP_PREFIX=/usr/local/hadoop</pre>
-              <h3><img class="alignnone size-full wp-image-167" src="https://hadoop7.files.wordpress.com/2017/01/hadoop-prefix3.png" alt="hadoop-prefix.png" width="708" height="428" /></h3>
-              <h3>Configuring  <strong>core-site.xml </strong> file</h3> Open <strong>core-site.xml</strong> file , which is located in "<strong><em> hadoop/etc/hadoop</em> </strong>" and add the following lines.
-              <pre>gedit core-site.xml</pre>
-              <pre><configuration>
-               	<property>
-               		<name>fs.defaultFS</name>
-               		<value>hdfs://localhost:9000</value>
-               	</property>
-              </configuration>
-              </pre>
-              <h4>Configuring hdfs-site.xml file</h4> Open <em><strong>hdfs-site.xml</strong> </em>file , which is located in " <strong>hadoop-2.7.3/etc/hadoop</strong> " and add the following lines. Specify the path where you want to store the dfs data in <strong><em>"dfs.name.dir"</em></strong>              and <strong><em>"dfs.data.dir"</em></strong> property
-              <pre>gedit hdfs-site.xml</pre>
-              <pre>
+                <h3>Configuring ssh</h3> For installing hadoop , we have to configure ssh. First, install ssh by running the command
+                <pre>sudo apt install ssh</pre> Next, open a terminal and run the following command.
+                <pre>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</pre>
+                <p>It will generate a rsa key, like below.</p>
+
+                <img src="/assets/images/hadoop/ssh-min.png" width="732" height="438" />
+                <p>Now, we have to add that key to authorized keys using the following command.</p>
+                <pre>cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys</pre> To check the ssh, run <code> ssh localhost </code> .It must login without asking any password. If it asks for password, then you have to repeat the above ssh configuration steps.
+
+                <h3>Installing Hadoop in Pseudo Distributed Mode</h3> Download hadoop-2.7.3 from this <a href="http://apache.mesi.com.ar/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz">link</a>. After downloading, extract it to the folder where you want to install hadoop. I am installing it in <strong><em>/usr/local/hadoop</em></strong>                location.  So after extracting the hadoop jar, run the below command to copy it to <strong><em>/usr/local/hadoop</em></strong>
+                <pre>sudo mv hadoop-2.7.3 /usr/local/hadoop</pre>
+                <h4>Step I: Setting up Hadoop</h4> We have to set <strong><em>HADOOP_HOME</strong></em> path . For that open terminal and edit the <strong><em> .bashrc </strong></em>file.
+                <pre>sudo gedit .bashrc</pre> add the following lines
+                <pre>export HADOOP_HOME=/usr/local/hadoop</pre>
+                <pre>export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</pre>
+                <p>refresh the <strong><em>.bashrc</strong></em> file</p>
+                <pre>source .bashrc</pre>
+                <img src="/assets/images/hadoop/hadoop-home-min.png" width="732" height="438" />
+
+                <h4>Step II: Hadoop Configuration</h4>
+                <h5>Adding HADOOP_PREFIX</h5> Previously, we set JAVA_HOME path. Similarly, we have to set HADOOP_PREFIX path in <strong>hadoop-env.sh  </strong>. file present in<strong><em> etc/hadoop</em> </strong>folder . This is to specify the path for our hadoop folder.  To
+                do that, open a terminal and run the following commands.
+                <pre>cd /usr/local/hadoop/etc/hadoop</pre>
+                <pre>gedit hadoop-env.sh</pre> and, in that file, add the HADOOP_PREFIX path
+                <pre>export HADOOP_PREFIX=/usr/local/hadoop</pre>
+
+                <h4>Configuring  <strong>core-site.xml </strong> file</h4>
+                <p>Open <strong>core-site.xml</strong> file , which is located in "<strong><em> hadoop/etc/hadoop</em> </strong>" and add the following lines.</p>
+                <pre>cd /usr/local/hadoop/etc/hadoop</pre>
+                <pre>gedit core-site.xml</pre>
+                <pre><textarea rows = "8" cols="150" readonly="readonly">
+
+                <configuration>
+               	  <property>
+               		   <name>fs.defaultFS</name>
+               		    <value>hdfs://localhost:9000</value>
+               	    </property>
+                </configuration>
+              </textarea></pre>
+
+                <h4>Configuring <strong>hdfs-site.xml</strong> file</h4> Open <em><strong>hdfs-site.xml</strong> </em>file , which is located in <strong>/etc/hadoop</strong> and add the following lines. Specify the path where you want to store the dfs data in <strong><em>"dfs.name.dir"</em></strong> and <strong><em>"dfs.data.dir"</em></strong>                property
+                <pre>gedit hdfs-site.xml</pre>
+                <pre><textarea rows = "15" cols="150" readonly="readonly">
+
                <configuration>
-              	<property>
-                		<name>dfs.name.dir</name>
-                		<value>file:///home/USERNAME/pseudo/dfs/name</value>
-              	</property>
-              	<property>
-                		<name>dfs.data.dir</name>
-                		<value>file:///home/USERNAME/pseudo/dfs/data</value>
-              	</property>
-              	<property>
-                 		<name>dfs.replication</name>
-                  		<value>1</value>
-              	</property>
-              </configuration>
-              </pre>
-              <h3>Configuring mapred-site.xml file</h3> Open <em><strong>mapred-site.xml</strong></em> file (create if not present ) , which is located in " <strong>hadoop-2.7.3/etc/hadoop</strong> " and add the following lines.
-              <pre>gedit mapred-site.xml</pre>
-              <pre><configuration>
-               	<property>
-               		<name>mapreduce.framework.name</name>
-               		<value>yarn</value>
-               	</property>
-              </configuration>
-              </pre>
-              <h3>Configuring yarn-site.xml file</h3> Open <em><strong>yarn-site.xml </strong></em>file , which is located in " <strong>hadoop-2.7.3/etc/hadoop</strong> " and add the following lines.
-              <pre>gedit yarn-site.xml</pre>
-              <pre><configuration>
-               	<property>
-               		<name>yarn.resourcemanager.hostname</name>
-               		<value>localhost</value>
-               	</property>
-               	<property>
-               		<name>yarn.nodemanager.aux-services</name>
-               		<value>mapreduce_shuffle</value>
-               	</property>
-              </configuration>
-              </pre>
-              <h3>Running hadoop</h3> To start hadoop, first we have to format the namenode. For that change directory to <em>hadoop installation </em> folder and run the command
-              <pre>hdfs namenode –format</pre> If everything is correct it will show the following screen. (dont worry if your screen dont match this ).
+              	  <property>
+                		    <name>dfs.name.dir</name>
+                		    <value>file:///home/USERNAME/pseudo/dfs/name</value>
+              	  </property>
+              	  <property>
+                		    <name>dfs.data.dir</name>
+                		    <value>file:///home/USERNAME/pseudo/dfs/data</value>
+              	  </property>
+              	  <property>
+                 		    <name>dfs.replication</name>
+                  		  <value>1</value>
+              	  </property>
+              </configuration></textarea></pre>
 
-              <img class="alignnone size-full wp-image-165" src="https://hadoop7.files.wordpress.com/2017/01/hadoop-format.png" alt="hadoop-format.png" width="732" height="438" /> Now, after formatting namenode , we have to start  namenode and datanode
-              . For that run the command.
-              <pre>start-dfs.sh</pre> Then to check whether namenode and datanode are running or not, run<code> jps </code>. It will list all the java processes running in the system. You can notice that<em> namenode</em>, <em>datanode</em> and <em>secondarynamenode</em>              are running.
+                <h4>Configuring <strong>mapred-site.xml</strong> file</h4>
+                <p>Open <em><strong>mapred-site.xml</strong></em> file (create if not present ), which is located in <strong>/etc/hadoop</strong> and add the following lines.
+                </p>
+                <pre>gedit mapred-site.xml</pre>
+                <pre><textarea rows = "8" cols="150" readonly="readonly">
 
-              <img class="alignnone size-full wp-image-168" src="https://hadoop7.files.wordpress.com/2017/01/hadoop-dfs.png" alt="hadoop-dfs.png" width="732" height="438" /> Now, we have to start yarn. To do that , run
-              <pre>start-yarn.sh</pre> You will get a screen like this. You can observe that resourceManager and NodeManager are also running.
+                <configuration>
+               	  <property>
+               		   <name>mapreduce.framework.name</name>
+               		    <value>yarn</value>
+               	  </property>
+               </configuration></textarea></pre>
 
-              <img class="alignnone size-full wp-image-169" src="https://hadoop7.files.wordpress.com/2017/01/hadoop-yarn.png" alt="hadoop-yarn.png" width="732" height="438" /> Thats it...<strong>.Our installation is completed</strong>... :) Now, open
-              your browser and run <code> http://localhost:50070 </code> to know about your namenodes and datanodes. You will get  a screen like this.
+                <h4>Configuring <strong>yarn-site.xml</strong> file</h4>
+                <p>Open <em><strong>yarn-site.xml </strong></em>file , which is located in <strong>/etc/hadoop</strong> and add the following lines.</p>
+                <pre>gedit yarn-site.xml</pre>
+                <pre><textarea rows = "12" cols="150" readonly="readonly">
 
-              <img class="alignnone size-full wp-image-41" src="https://hadoop7.files.wordpress.com/2017/01/dfs-browser.png" alt="dfs-browser.png" width="1920" height="975" /> Now,  in another tab, run <code> http://localhost:8088 </code> to manage your
-              cluster.
+                  <configuration>
+               	      <property>
+               		       <name>yarn.resourcemanager.hostname</name>
+               		       <value>localhost</value>
+               	      </property>
+               	      <property>
+               		       <name>yarn.nodemanager.aux-services</name>
+               		       <value>mapreduce_shuffle</value>
+               	      </property>
+                </configuration></textarea></pre>
 
-              <img class="alignnone size-full wp-image-42" src="https://hadoop7.files.wordpress.com/2017/01/yarn-browser.png" alt="yarn-browser.png" width="1920" height="975" /> If you want to stop hadoop, then type and run
-              <pre>stop-dfs.sh</pre>
-              <pre>stop-yarn.sh</pre> Or , simply you can run
-              <pre>stop-all.sh</pre> And, each time you dont need to format the namenode. Just start dfs and yarn using the  above specified commands or, simply running
-              <pre>start-all.sh</pre> To execute mapreduce program in hadoop, follow the<strong><a href="https://hadoop7.github.io/hadoop/executingmapreduce.html/"> link</a>.</strong>
+                <h3>Running hadoop</h3>
+                <p>To start hadoop, first we have to format the namenode. For that change directory to <em>hadoop installation </em> directory and run the command
+                  <pre>hdfs namenode –format</pre> If everything is correct it will show the following screen. (dont worry if your screen dont match this ).</p>
+
+                <img src="/assets/images/hadoop/hadoop-format-min.png" width="732" height="438" />
+                <p>Now, after formatting namenode, we have to start namenode and datanode</p>
+                For that run the command.
+                <pre>start-dfs.sh</pre>
+                <p>Then to check whether namenode and datanode are running or not, run<code> jps </code>. It will list all the java processes running in the system. You can notice that<em> namenode</em>, <em>datanode</em> and <em>secondarynamenode</em> are
+                  running.
+                </p>
+
+                <img src="/assets/images/hadoop/jps-min.png" width="732" height="438" />
+                <p> Now, we have to start yarn. To do that, run</p>
+                <pre>start-yarn.sh</pre>
+                <p>You will get a screen like this. You can observe that resourceManager and NodeManager are also running.</p>
+
+                <img src="/assets/images/hadoop/jps2-min.png" width="732" height="438" />
+                <p>Thats it...<strong>.Our installation is completed</strong>... :) Now, open your browser and run <code> http://localhost:50070 </code> to know about your namenodes and datanodes. You will get  a screen like this.</p>
+
+                <img src="/assets/images/hadoop/dfs-browser-min.png" width="732" height="438" />
+                <p> Now,  in another tab, run <code> http://localhost:8088 </code> to manage your cluster.</p>
+
+                <img src="/assets/images/hadoop/yarn-browser-min.png" width="732" height="438" />
+                <p>If you want to stop hadoop, then type and run</p>
+                <pre>stop-dfs.sh</pre>
+                <pre>stop-yarn.sh</pre> Or , simply you can run
+                <pre>stop-all.sh</pre> And, each time you dont need to format the namenode. Just start dfs and yarn using the  above specified commands or, simply running
+                <pre>start-all.sh</pre> To execute mapreduce program in hadoop, follow the<strong><a href="https://hadoop7.github.io/hadoop/executingmapreduce.html/"> link</a>.</strong>
 
             </div>
           </div>
