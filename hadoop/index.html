@@ -189,12 +189,14 @@
                 <li><b>Hadoop MapReduce:</b> It is a framework to process data across multiple machines.</li>
                 <li><b>Hadoop YARN:</b> This is a framework for job scheduling and cluster resource management. It is added in Hadoop 2.0 version.</li>
               </ul>
-              <h2>3.What is MapReduce ?</h2> MapReduce is a programming model for data processing. MapReduce works by breaking the processing into two phases: the <strong>map</strong> phase and the <strong>reduce</strong> phase. Each phase has key-value pairs as input and output,
-              the types of which may be chosen by the programmer. The programmer also specifies two functions: the map function and the reduce function.
-              <h2>4.Hadoop Mapreduce Phases in detail.</h2> The <strong>map phase</strong> is done by mappers. <em>Mappers</em> run on unsorted input key/values pairs. Each mapper emits zero, one, or multiple output key/value pairs for each input key/value pairs. The <strong>combine phase</strong>              is done by combiners. The <em>combiner</em> should combine key/value pairs with the same key. Each combiner may run zero, once, or multiple times. The <strong>shuffle and sort phase</strong> is done by the framework. Data from all mappers
-              are grouped by the key, split among reducers and sorted by the key. Each reducer obtains all values associated with the same key. The programmer may supply custom compare functions for sorting and a <em>partitioner</em> for data split. The
-              <strong>partitioner</strong> decides which reducer will get a particular key value pair. The <strong>reducer</strong> obtains sorted key/[values list] pairs, sorted by the key. The value list contains all values with the same key produced
-              by mappers. Each reducer emits zero, one or multiple output key/value pairs for each input key/value pair.
+              <h2>3.What is MapReduce ?</h2>
+              <p>MapReduce is a programming model for data processing. MapReduce works by breaking the processing into two phases: the <strong>map</strong> phase and the <strong>reduce</strong> phase. Each phase has key-value pairs as input and output, the
+                types of which may be chosen by the programmer. The programmer also specifies two functions: the map function and the reduce function.
+                <h2>4.Hadoop Mapreduce Phases in detail.</h2> The <strong>map phase</strong> is done by mappers. <em>Mappers</em> run on unsorted input key/values pairs. Each mapper emits zero, one, or multiple output key/value pairs for each input key/value pairs. The <strong>combine phase</strong>                is done by combiners. The <em>combiner</em> should combine key/value pairs with the same key. Each combiner may run zero, once, or multiple times. The <strong>shuffle and sort phase</strong> is done by the framework. Data from all mappers
+                are grouped by the key, split among reducers and sorted by the key. Each reducer obtains all values associated with the same key. The programmer may supply custom compare functions for sorting and a <em>partitioner</em> for data split.
+                The
+                <strong>partitioner</strong> decides which reducer will get a particular key value pair. The <strong>reducer</strong> obtains sorted key/[values list] pairs, sorted by the key. The value list contains all values with the same key produced
+                by mappers. Each reducer emits zero, one or multiple output key/value pairs for each input key/value pair.</p>
 
               <img src="/assets/images/mapreduce_work.jpg" />
               <h2>5.Mapper Class</h2> The Mapper class defines the Map job. Maps input key-value pairs to a set of intermediate key-value pairs. Maps are the individual tasks that transform the input records into intermediate records. The transformed intermediate records need
