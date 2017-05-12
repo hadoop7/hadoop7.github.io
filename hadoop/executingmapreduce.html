@@ -146,7 +146,8 @@
                 <li> <a href= "executingmapreduce-maven.html">In IDE like eclipse or IntelliJ as a maven project. </a></li></ol>
               </h5>
               <h3>Executing a MapReduce program in hadoop-2.7.3</h3>
-              <h4>step 1 : Write your mapreduce program</h4> write your mapreduce program. Here I am using a simple wordcount program
+              <h4>step 1 : Write your mapreduce program</h4>
+              <h5> Write your mapreduce program. Here I am using a simple wordcount program, and saved it as <em></strong>wordcount.java</em></strong></h5>
               <pre><textarea rows = "60" cols="150" readonly="readonly">
 
 import java.io.IOException;
@@ -208,20 +209,30 @@ public class WordCount {
 }
 
 </textarea></pre>
-              <h4>step 2 : Compile your Java files & create the JAR file</h4> Now, we have to compile the java classes in a terminal using the command
-              <pre>javac -cp `hadoop classpath` WordCount.java</pre> If there are no errors in the code, you will get three .class files. We have to create a Java Archive File  from the three class files.
-              <pre>jar cf WordCountJar.jar *.class</pre> Here, <em><strong>*.class</strong> </em>will take all the files that are ending with .class. So, make sure that the folder dosen't contain other .class files.
-              <h4>step 3: Create a folder in HDFS and paste input file</h4> To execute a Mapreduce program in Hadoop, the input and output must be in HDFS . First start hdfs and yarn using the command <code> start-all.sh </code> and next create a folder in HDFS file system.
-              <pre>hdfs dfs -mkdir /WordCountFolder</pre> Now, change permissions to the folder, so that hadoop can read and write in that folder.
-              <pre>hdfs dfs -chmod 777 /WordCountFolder</pre> We have to copy our input file to that folder. For that we use <code>-put</code> command. For this program, take any text file and copy it by mentioning your input file path.
-              <pre>hdfs dfs -put /home/sai/data.txt /WordCountFolder</pre>
-              <h4>step 4: Running the JAR file</h4> Now, to run the MapReduce program,  run the following command. here, specify your path to the JAR file.
-              <pre>hadoop jar /home/sai/WordCountJar.jar WordCount /WordCountFolder/data.txt /WordCountFolder/output</pre> note: output directory should not exist before executing the command. If there is directory with the same name, hadoop will return
-              an error and terminates. If there are no errors in the program and everything is correct , you will get output like this.
+              <h4>step 2 : Compile your Java files & create the JAR file</h4>
+              <h5> Now, we have to compile the java classes in a terminal using the command</h5>
+              <pre>javac -cp `hadoop classpath` WordCount.java</pre>
+              <h5>If there are no errors in the code, you will get three <strong> .class </strong> files. We have to create a Java Archive File  from the three class files.</h5>
+              <pre>jar cf WordCountJar.jar *.class</pre>
+              <h5>Here, <em><strong>*.class</strong> </em>will take all the files that are ending with .class. So, make sure that the folder dosen't contain other .class files.
+              </h5>
+              <h4>step 3: Create a folder in HDFS and paste input file</h4>
+              <h5>To execute a Mapreduce program in Hadoop, the input and output must be in HDFS . First start hdfs and yarn using the command <code> start-all.sh </code> and next create a folder in HDFS file system.
+              </h5><pre>hdfs dfs -mkdir /WordCountFolder</pre>
+              <h5> Now, change permissions to the folder, so that hadoop can read and write in that folder.</h5>
+              <pre>hdfs dfs -chmod 777 /WordCountFolder</pre>
+              <h5> We have to copy our input file to that folder. For that we use <code>-put</code> command. For this program, take any text file and copy it by mentioning your input file path.
+            </h5> <pre>hdfs dfs -put /home/sai/data.txt /WordCountFolder</pre>
+              <h4>step 4: Running the JAR file</h4>
+              <h5>Now, to run the MapReduce program,  run the following command. here, specify your path to the JAR file.</h5>
+              <pre>hadoop jar /home/sai/WordCountJar.jar WordCount /WordCountFolder/data.txt /WordCountFolder/output</pre>
+              <h5>note: output directory should not exist before executing the command. If there is directory with the same name, hadoop will return
+              an error and terminates. If there are no errors in the program and everything is correct , you will get output like this.</h5>
 
               <img src="/assets/images/hadoop/mapred-compile-min.png" alt="mapred-compile.png" width="732" height="438" />
               <h4>step 5: Viewing the result.</h4> Output will be generated in the output path you mentioned. To view the results, run the following command.
-              <pre>hdfs dfs -cat WordCountFolder/output/*</pre> To execute mapreduce programs in eclipse, follow this link..
+              <pre>hdfs dfs -cat WordCountFolder/output/*</pre>
+              <h5>To execute mapreduce programs in eclipse,check yhe links in the top..</h5>
             </div>
           </div>
         </div>
