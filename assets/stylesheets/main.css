@@ -36,7 +36,9 @@ html {
     color:#26525B;
     background-color: yellow;
 }
-
+img {
+max-width: 100%;
+}
 
   textarea {
      resize: none;
